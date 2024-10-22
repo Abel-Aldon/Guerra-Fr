@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+</head>
+
+<body onload="actReloj(), animaTitulo(true)">
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="causas.html" >Causas </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="consecuencias.html" >Consecuencias</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Actualidad.html" >Actualidad</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Armamento.html" >Armamento</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>¿Qué fue?</h2>
+                        <div class="box">
+                            <p>Fue un conflicto prolongado y tenso entre Estados Unidos y la Unión Soviética que surgió tras la Segunda Guerra Mundial. Aunque no hubo enfrentamientos directos entre ambas superpotencias, la rivalidad se manifestó en múltiples frentes. Estados Unidos lideraba el bloque capitalista, mientras que la Unión Soviética representaba el bloque comunista</p>
+                            <p>El conflicto se desarrolló también en el terreno diplomático y económico, y dio lugar a guerras indirectas en países como Corea, Vietnam y Cuba, donde cada superpotencia apoyaba a uno de los bandos en conflicto. Además, surgieron alianzas militares como la OTAN (bajo el liderazgo de Estados Unidos) y el Pacto de Varsovia (apoyado por la Unión Soviética). Durante este periodo, el espionaje jugó un papel crucial, con agencias como la CIA y el KGB involucradas en operaciones encubiertas.</p>
+                        </div>
+                        
+                        <div class="box">
+                            <div class="pantalla">
+                                <img class="exterior" src="img/bandera.jpeg" alt="Manos">
+                                <img  class="interior" src="img/lidere.jpeg" alt="Huesos">                                                          
+                                <svg width="0" height="0">                            
+                                <clippath id="clipping">
+                                <circle id="lente" cx="50" cy="50" r="0" />
+                                </clippath>
+                            </svg>
+                            <p id="marco"></p> 
+                            <p class= "letras" style="color: red; font-size: 20px; ">Haz click en la imágen</p>
+                            </div>
+                        </div>
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+    <script>
+
+        let lente = document.getElementById("lente");
+        let pantalla = document.querySelector(".pantalla"); 
+        lente.setAttribute("cx", 300);
+        pantalla.addEventListener("mousemove", (e) => {
+    
+        lente.setAttribute("cx", e.pageX -  pantalla.offsetLeft);
+        lente.setAttribute("cy", e.pageY -  pantalla.offsetTop);
+    });
+    
+        pantalla.addEventListener('mousedown', (e)=>{
+        if (lente.getAttribute("r") ==0 ){
+        lente.setAttribute("r","1200")
+    
+    }
+    
+        else{
+        lente.setAttribute("r","0")
+    
+    }
+    
+    });
+    
+        pantalla.addEventListener("mouseleave", (e) => {
+        lente.setAttribute("r", "0");
+    
+    });
+        teletipo("La Guerra Fría terminó en 1991 con la disolución de la Unión Soviética, lo que marcó el fin de la tensión ideológica y militar que había dominado gran parte del siglo XX.", 50, 'marco')
+        function teletipo(cad, tmp, iden, cnt) {
+
+        if (cnt== null) cnt=0;
+        var letra = cad.substr(cnt,1)
+        cuadro=document.getElementById(iden);
+        while (letra == " ")
+
+    {
+
+        cnt++;
+        letra += cad.substr(cnt,1);
+
+        }
+
+        cuadro.innerHTML += letra;
+        cnt++
+        if (cnt < cad.length){
+        tempor=setTimeout(teletipo,tmp,cad,tmp,iden,cnt); 
+
+    }
+    }
+    </script>
+
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer>
+
+</body>
+</html>

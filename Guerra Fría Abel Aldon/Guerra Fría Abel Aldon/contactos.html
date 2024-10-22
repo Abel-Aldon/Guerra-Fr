@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+
+</head>
+
+<body onload="actReloj(), animaTitulo(true), prepEnlaces()">
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="causas.html" >Causas </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="consecuencias.html" >Consecuencias</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Actualidad.html" >Actualidad</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Armamento.html" >Armamento</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>¡Contáctame!</h2>
+                        <div class="box">
+                                <p style="font-size: 50px; background-color: white;"><a href="https://www.google.com/intl/es/gmail/about/">adavidaldon@hotmail.com</a></p>
+                        </div>
+
+                        <div class="box">
+
+                            <p style="font-size: 20px;">Espero que hayas disfrutado de la página y poder haber adquirido un poco más de conocimiento sobre la historia pasada. </p>
+
+                        </div>
+                    
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+
+    <script>
+        function prepEnlaces()
+    {
+        let ind;
+        let lista = document.getElementsByTagName('a');
+        for(ind=0; ind < lista.length; ind++){
+        document.links[ind].onmousedown = preguntar;
+    }
+    }
+    </script>
+
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer> 
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+
+    <style>
+
+        img {
+
+            width: 500px;
+            height: 500px;
+
+        }
+
+
+    </style>
+</head>
+
+<body onload="actReloj(), animaTitulo(true), reset()">
+
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="index.html">¿Qué fue? </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="consecuencias.html" >Consecuencias</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Actualidad.html" >Actualidad</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Armamento.html" >Armamento</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>Causas</h2>
+                        <div class="box">
+                            <p>La principales causas Fueron: </p>
+                            <p><li>Conflicto ideológico: La confrontación entre el capitalismo (representado por Estados Unidos) y el comunismo (liderado por la Unión Soviética) fue la raíz central de las tensiones. Ambos sistemas eran incompatibles y se veían como una amenaza mutua.</li></p>
+
+                            <p><li>Desconfianza mutua: Aunque fueron aliados durante la Segunda Guerra Mundial, al finalizar el conflicto, la falta de acuerdos claros sobre el futuro de Europa y el destino de Alemania generó una profunda desconfianza entre ambas potencias.</li></p>
+
+                            <p><li>Expansión del comunismo: La Unión Soviética, tras la guerra, buscó expandir su influencia política y militar en Europa del Este, creando estados satélites comunistas que sirvieron como una barrera de seguridad. Estados Unidos percibió esta expansión como una amenaza a la estabilidad y la libertad en Europa y el mundo.</li></p>
+                            
+                           <p><li>Propaganda y percepción pública: Ambos lados utilizaron la propaganda para promover su sistema ideológico como superior y demonizar al oponente, lo que alimentó la hostilidad entre las poblaciones y los gobiernos de ambos países.</li></p> 
+                        </div>
+                        
+                        <div class="box">
+                        
+                            <div style="text-align:center">
+                                <div class="flechas" onclick="cambio(-1)"> &lt; </div>
+                                <div class="flechas" onclick="parar()">
+                                <img id="centro" src=""  alt="">
+                                </div>
+                                <div class="flechas" onclick="cambio(1)"> &gt; </div>
+                                <div class="ctrl">
+                                <div class="auto" onclick="automat(1000,-1)">&lt; </div>
+                                auto
+                                <div class="auto" onclick="automat(1000, 1)"> &gt;</div>
+                                </div>
+                                </div>
+                
+                        </div>
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+
+    <script>
+        function cambio( sen){
+           let carrusel = document.getElementById('centro');
+           carrusel.contador+= sen;
+           if ( carrusel.contador == carrusel.lista.length){
+                carrusel.contador = 0;
+          }
+          else  if ( carrusel.contador < 0) {
+              carrusel.contador =  carrusel.lista.length-1;
+              }
+          carrusel.src =  carrusel.lista[carrusel.contador]
+        }
+        function reset(){
+           let carrusel = document.getElementById('centro');
+           carrusel.lista = new Array(
+          'img/capvscom.jpeg',
+          'img/descon.jpeg', 
+          'img/expansion.jpeg' ,
+          'img/mentiras.jpg');
+           carrusel.contador = 0;
+           carrusel.tempor = null;
+           parar();
+           carrusel.src = carrusel.lista[0]
+        }
+        function parar(car)
+        {
+           let carrusel = document.getElementById('centro');
+           if( carrusel.tempor!=null)
+             clearTimeout(carrusel.tempor);
+        }
+        function automat(tiempo, inc=1)
+        {
+            let carrusel = document.getElementById('centro');
+            clearTimeout(carrusel.tempor);
+            cambio(inc);
+           carrusel.tempor = setTimeout(automat, tiempo, tiempo, inc)
+         }
+        </script>
+    
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer>
+
+</body>
+</html>

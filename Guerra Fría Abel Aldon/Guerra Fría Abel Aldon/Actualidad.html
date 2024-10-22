@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+
+    <style>
+
+        img {
+
+            height: 400px;
+            width: 400px;
+
+        }
+
+        .interior {
+        
+            width: 640px;
+            height: 400px;
+
+
+        }
+
+    </style>
+</head>
+
+<body onload="actReloj(), animaTitulo(true)">
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="causas.html" >Causas </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="consecuencias.html" >Consecuencias</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="index.html" >¿Qué fue?</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Armamento.html" >Armamento</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>Actualidad</h2>
+                        <div class="box">
+                            <p>A pesar de que la guerra fría ya pasó, las relaciones entre Estados Unidos y Rusia están marcadas por una gran tensión, principalmente debido al conflicto en Ucrania. La invasión rusa en 2022 ha empeorado significativamente los lazos diplomáticos. Estados Unidos ha respondido con duras sanciones económicas contra Rusia, mientras que también ha brindado un fuerte apoyo militar y financiero a Ucrania. Esto ha reforzado la rivalidad entre ambos países, recordando épocas de confrontación como la Guerra Fría.</p>
+                            <p>Además, hay una competencia geopolítica más amplia, con desacuerdos en temas como la influencia en Europa del Este, la expansión de la OTAN y la intervención en conflictos globales. Las ciberamenazas, las acusaciones de interferencia electoral y los desacuerdos sobre el control de armas nucleares también han agudizado la desconfianza mutua.</p>
+
+                        </div>
+                        
+                        <div class="box">
+                            <div class="pantalla">
+                                <img class="exterior" src="img/amigo.jpeg" alt="Manos">
+                                <img  class="interior" src="img/traicion.jpg" alt="Huesos">                                                          
+                                <svg width="0" height="0">                            
+                                <clippath id="clipping">
+                                <circle id="lente" cx="50" cy="50" r="0" />
+                                </clippath>
+                            </svg>
+                            <p id="marco"></p> 
+                            <p class= "letras" style="color: red; font-size: 20px; ">Haz click en la imágen</p>
+                            </div>
+                            
+                        </div>
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+    <script>
+
+        let lente = document.getElementById("lente");
+        let pantalla = document.querySelector(".pantalla"); 
+        lente.setAttribute("cx", 300);
+        pantalla.addEventListener("mousemove", (e) => {
+    
+        lente.setAttribute("cx", e.pageX -  pantalla.offsetLeft);
+        lente.setAttribute("cy", e.pageY -  pantalla.offsetTop);
+    });
+    
+        pantalla.addEventListener('mousedown', (e)=>{
+        if (lente.getAttribute("r") ==0 ){
+        lente.setAttribute("r","1200")
+    
+    }
+    
+        else{
+        lente.setAttribute("r","0")
+    
+    }
+    
+    });
+    
+        pantalla.addEventListener("mouseleave", (e) => {
+        lente.setAttribute("r", "0");
+    
+    });
+        teletipo("A pesar de esto, existen áreas limitadas de cooperación, como el control de armas nucleares y la exploración espacial, pero la relación en su conjunto sigue siendo mayormente conflictiva.", 50, 'marco')
+        function teletipo(cad, tmp, iden, cnt) {
+
+        if (cnt== null) cnt=0;
+        var letra = cad.substr(cnt,1)
+        cuadro=document.getElementById(iden);
+        while (letra == " ")
+
+    {
+
+        cnt++;
+        letra += cad.substr(cnt,1);
+
+        }
+
+        cuadro.innerHTML += letra;
+        cnt++
+        if (cnt < cad.length){
+        tempor=setTimeout(teletipo,tmp,cad,tmp,iden,cnt); 
+
+    }
+    }
+    </script>
+
+    
+
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer>
+
+</body>
+</html>
