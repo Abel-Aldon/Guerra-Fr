@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+
+    <style>
+
+        img {
+
+            height: 400px;
+            width: 520px;
+
+        }
+
+    </style>
+
+</head>
+
+<body onload="actReloj(), animaTitulo(true), reset() ">
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="causas.html" >Causas </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="consecuencias.html" >Consecuencias</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Actualidad.html" >Actualidad</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="index.html" >¿Qué fue?</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>Armamento</h2>
+                        <div class="box">
+                            <p>Sus armas utilizadas fueron:</p>
+                            <p><li>Aviones de combate: La Guerra Fría vio el desarrollo de avanzados aviones de combate y cazas interceptores como el F-4 Phantom II de EE. UU. y el MiG-21 de la URSS, que fueron usados en conflictos proxy como la Guerra de Vietnam.</li></p>
+                            <p><li>Submarinos nucleares: Submarinos como el estadounidense clase Ohio y los soviéticos clase Typhoon eran esenciales para la disuasión nuclear, ya que podían permanecer sumergidos durante largos periodos y lanzar misiles nucleares desde cualquier parte del mundo.</li></p>
+                            <p><li>Tanques y Vehículos blindados: Ambos bloques construyeron poderosos tanques, como el M60 Patton de EE. UU. y el T-55 soviético. Estos tanques no solo fueron símbolos de poder terrestre, sino que también fueron usados en conflictos indirectos, especialmente en Europa, Oriente Medio y Asia</li></p>
+                            <p><li>Ojivas nucleares: Las armas nucleares fueron el símbolo más temido de la Guerra Fría. Tanto EE. UU. como la URSS acumularon enormes arsenales de bombas atómicas y de hidrógeno (termonucleares), capaces de destruir ciudades enteras. </li></p>
+                        </div>
+                        
+                        <div class="box">
+                            <div style="text-align:center">
+                                <div class="flechas" onclick="cambio(-1)"> &lt; </div>
+                                <div class="flechas" onclick="parar()">
+                                <img id="centro" src=""  alt="">
+                                </div>
+                                <div class="flechas" onclick="cambio(1)"> &gt; </div>
+                                <div class="ctrl">
+                                <div class="auto" onclick="automat(1000,-1)">&lt; </div>
+                                auto
+                                <div class="auto" onclick="automat(1000, 1)"> &gt;</div>
+                                </div>
+                                </div>
+                            
+                        </div>
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+    <script>
+
+        function cambio( sen){
+           let carrusel = document.getElementById('centro');
+           carrusel.contador+= sen;
+           if ( carrusel.contador == carrusel.lista.length){
+                carrusel.contador = 0;
+          }
+          else  if ( carrusel.contador < 0) {
+              carrusel.contador =  carrusel.lista.length-1;
+              }
+          carrusel.src =  carrusel.lista[carrusel.contador]
+        }
+        function reset(){
+           let carrusel = document.getElementById('centro');
+           carrusel.lista = new Array(
+          'img/avion.jpeg',
+          'img/subma.jpg', 
+          'img/tanque.jpg' ,
+          'img/ojiva.jpeg');
+           carrusel.contador = 0;
+           carrusel.tempor = null;
+           parar();
+           carrusel.src = carrusel.lista[0]
+        }
+        function parar(car)
+        {
+           let carrusel = document.getElementById('centro');
+           if( carrusel.tempor!=null)
+             clearTimeout(carrusel.tempor);
+        }
+        function automat(tiempo, inc=1)
+        {
+            let carrusel = document.getElementById('centro');
+            clearTimeout(carrusel.tempor);
+            cambio(inc);
+           carrusel.tempor = setTimeout(automat, tiempo, tiempo, inc)
+         }
+
+
+
+
+    </script>
+
+
+    
+
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer>
+
+</body>
+</html>

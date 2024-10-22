@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Guerra Fria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style1.css'>
+    <link rel="icon" href="img/logo.png">
+
+    <style>
+
+        img {
+
+            width: 500px;
+            height: 500px;
+        }
+
+    </style>
+
+</head>
+
+<body onload="actReloj(), animaTitulo(true), reset()">
+
+    <header>
+        <h1>Guerra Fría</h1>
+    </header>
+            <div id="reloj"></div>  
+
+    <div>
+        <div id="Menu1" class="cabMenu"  onMouseout="despMenu('itMenu1',false)" onMouseover="despMenu('itMenu1',true)">
+            Menú
+        </div>
+
+        <div id = "itMenu1" class="contMenu1" onMouseover="despMenu('itMenu1',true)" onMouseout="despMenu('itMenu1',false)">
+
+            <div id="itMenu11" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="causas.html" >Causas </a>
+            </div>
+
+            <div id="itMenu12" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="index.html" >¿Qué fue?</a>
+            </div>
+
+            <div id="itMenu14" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Actualidad.html" >Actualidad</a>
+            </div>
+
+            <div id="itMenu15" class="itMenuDes" onMouseover="destacar(this,true)" onMouseout="destacar(this,false)">
+                <a href="Armamento.html" >Armamento</a>
+            </div>
+
+            <div id="itMenu16" class="itMenuDes" onMouseover="destacar(this,1)" onMouseout="destacar(this,false)">
+                <a href="contactos.html" >Contactanos</a>
+            </div>
+
+        </div>
+    </div>
+        <section class="contenedor">
+            <div class="container">
+                <ul>
+                    <h2>Consecuencias</h2>
+                        <div class="box">
+                            <p><li>Sus consecuencias fueron:</li></p>
+                            <p><li>División del mundo en bloques: El mundo quedó dividido entre el bloque occidental, liderado por Estados Unidos, y el bloque oriental, liderado por la Unión Soviética. Esta división afectó la política internacional durante décadas, lo que llevó a conflictos indirectos y guerras por procura (proxy wars) en varias regiones del mundo.</li></p>
+                            <p><li>Carrera armamentista: Ambas superpotencias invirtieron enormes recursos en la creación y desarrollo de armas nucleares y convencionales. Esto llevó a un peligro constante de guerra nuclear, especialmente durante crisis como la de los misiles en Cuba en 1962.</li></p>
+                            <p><li>Plan Marshall: En un esfuerzo por reconstruir Europa después de la Segunda Guerra Mundial y evitar que se uniera al bloque soviético, Estados Unidos implementó el Plan Marshall, un programa de ayuda económica que fortaleció las economías europeas occidentales.</li></p>
+                            <p><li>Economías militarizadas: El enfoque en la defensa militar impulsó sectores industriales en ambas superpotencias, aunque también drenó recursos que podrían haber sido utilizados para el desarrollo social y civil.</li></p>
+                        </div>
+                        
+                        <div class="box">
+                            <div style="text-align:center">
+                                <div class="flechas" onclick="cambio(-1)"> &lt; </div>
+                                <div class="flechas" onclick="parar()">
+                                <img id="centro" src=""  alt="">
+                                </div>
+                                <div class="flechas" onclick="cambio(1)"> &gt; </div>
+                                <div class="ctrl">
+                                <div class="auto" onclick="automat(1000,-1)">&lt; </div>
+                                auto
+                                <div class="auto" onclick="automat(1000, 1)"> &gt;</div>
+                                </div>
+                                </div>
+                            
+                        </div>
+                </ul>        
+            </div> 
+        </section>    
+
+    <script src="script.js"></script>
+    <script>
+
+        function cambio( sen){
+           let carrusel = document.getElementById('centro');
+           carrusel.contador+= sen;
+           if ( carrusel.contador == carrusel.lista.length){
+                carrusel.contador = 0;
+          }
+          else  if ( carrusel.contador < 0) {
+              carrusel.contador =  carrusel.lista.length-1;
+              }
+          carrusel.src =  carrusel.lista[carrusel.contador]
+        }
+        function reset(){
+           let carrusel = document.getElementById('centro');
+           carrusel.lista = new Array(
+          'img/aliado.png',
+          'img/carrera.jpeg', 
+          'img/marshal.jpeg' ,
+          'img/militar.jpeg');
+           carrusel.contador = 0;
+           carrusel.tempor = null;
+           parar();
+           carrusel.src = carrusel.lista[0]
+        }
+        function parar(car)
+        {
+           let carrusel = document.getElementById('centro');
+           if( carrusel.tempor!=null)
+             clearTimeout(carrusel.tempor);
+        }
+        function automat(tiempo, inc=1)
+        {
+            let carrusel = document.getElementById('centro');
+            clearTimeout(carrusel.tempor);
+            cambio(inc);
+           carrusel.tempor = setTimeout(automat, tiempo, tiempo, inc)
+         }
+
+
+
+
+    </script>
+
+
+    
+
+    <footer>Producciones Abel Aldón derechos reservados © Octubre de 2024.</footer>
+
+</body>
+</html>
